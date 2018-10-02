@@ -3,7 +3,9 @@ class App extends React.Component {
         super();
         this.state = {
             searchText: '',
-            users:[]
+            users:[],
+            totalCunt: '',
+            errorR: '' 
         };
     }
 
@@ -17,10 +19,19 @@ class App extends React.Component {
         const url = `https://api.github.com/search/users?q=${searchText}`;
         fetch(url)
             .then(response => response.json())
-            .then(responseJson => this.setState({users: responseJson.items}));
+            .then(responseJson => this.setState({
+                users: responseJson.items,
+                totalCunt: responseJson.total_count
+            }))
+            .catch(error => {  
+                console.log("Ooops:", error)              
+                this.setState({ errorR: './404.png' })
+            })
+            
     }
 
-    render() {
+    render() {       
+        
         return (
             <div className="react-container">
                 <div className="form-container">
@@ -36,21 +47,27 @@ class App extends React.Component {
                             value={this.state.searchText}/>
                                             
                     </form>
-                </div>
-                <UsersList users={this.state.users}/>
+                </div>                
+                <h4 className="count">Found users: {this.state.totalCunt}</h4>
+                <div className="error">
+                    <img src={this.state.errorR} className="error"/>
+                </div>              
+
+                <UsersList users={this.state.users}/>                
             </div>
-        );
+        )        
     }
 }
 
 class UsersList extends React.Component {
-    get users() {
-        return this.props.users.map(user => <User key={user.id} user={user}/>);
-    }
+       
+    get users() {        
+            return this.props.users.map(user => <User key={user.id} user={user}/>);        
+    }    
 
     render() {
         return (
-            <div className="users">
+            <div className="users">                          
                 {this.users}
             </div>
         );
@@ -67,6 +84,5 @@ class User extends React.Component {
         );
     }
 }
-
 
 ReactDOM.render(<App/>, document.getElementById('root'));

@@ -1,12 +1,20 @@
+body * {
+    box-sizing: border-box;
+    margin: 0 auto;
+}
 body {
     background-color: rgb(231, 232, 233);
     display: flex;
     justify-content: center;
     margin: 0;
     color: white;
+    box-sizing: border-box;
 }
 h3 {
     font-family: 'Montserrat', sans-serif;
+}
+h4 {
+    color: black;
 }
 label {
     font-size: 16px;
@@ -18,14 +26,23 @@ input {
     width: 200px;
     height: 20px;
 }
+
 .root {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin: 0;
 }
-
+.count{
+    margin-top: 0;
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
 .form-container {
-    width: 100vw;
+    width: 100%;
     padding: 30px;    
     display: flex;
     text-align: center;
@@ -33,7 +50,9 @@ input {
     justify-content: center;
     background: rgba(33, 33, 34, 0.7);
 }
-
+.react-container {
+    width: 100%;    
+}
 .users {
 
     margin: 20px auto;
@@ -57,7 +76,12 @@ img {
     border-radius: 50%;
     box-shadow: 2px 2px 6px rgb(66, 66, 66);
 }
-
+.error {
+    text-align: center;
+    
+    margin: 10px auto;
+    border-radius: 0;
+}
 a {
     font-family: 'Montserrat', sans-serif;
     margin-left: 15px;
