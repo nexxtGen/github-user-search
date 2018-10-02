@@ -50,24 +50,35 @@ var App = function (_React$Component) {
 
             return React.createElement(
                 "div",
-                null,
+                { className: "react-container" },
                 React.createElement(
-                    "form",
-                    { onSubmit: function onSubmit(event) {
-                            return _this3.onSubmit(event);
-                        } },
+                    "div",
+                    { className: "form-container" },
                     React.createElement(
-                        "label",
-                        { htmlFor: "searchText" },
-                        "Search by user name"
+                        "h3",
+                        null,
+                        "GitHub Users Search App"
                     ),
-                    React.createElement("input", {
-                        type: "text",
-                        id: "searchText",
-                        onChange: function onChange(event) {
-                            return _this3.onChangeHandle(event);
-                        },
-                        value: this.state.searchText })
+                    React.createElement(
+                        "form",
+                        { onSubmit: function onSubmit(event) {
+                                return _this3.onSubmit(event);
+                            } },
+                        React.createElement(
+                            "label",
+                            { htmlFor: "searchText" },
+                            "Search by User Name"
+                        ),
+                        React.createElement("br", null),
+                        React.createElement("input", {
+                            className: "input-search",
+                            type: "text",
+                            id: "searchText",
+                            onChange: function onChange(event) {
+                                return _this3.onChangeHandle(event);
+                            },
+                            value: this.state.searchText })
+                    )
                 ),
                 React.createElement(UsersList, { users: this.state.users })
             );
@@ -91,7 +102,7 @@ var UsersList = function (_React$Component2) {
         value: function render() {
             return React.createElement(
                 "div",
-                null,
+                { className: "users" },
                 this.users
             );
         }
@@ -121,7 +132,7 @@ var User = function (_React$Component3) {
         value: function render() {
             return React.createElement(
                 "div",
-                null,
+                { className: "user" },
                 React.createElement("img", { src: this.props.user.avatar_url, style: { maxWidth: '100px' } }),
                 React.createElement(
                     "a",
